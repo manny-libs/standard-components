@@ -7,8 +7,36 @@
 
     <script type="module" src="/build/standard-components.esm.js"></script>
     <script nomodule src="/build/standard-components.js"></script>
+    <style>
+      body {
+        overflow: hidden;
+      }
+      st-modal {
+        margin: 50px;
+      }
+    </style>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <div class="page-wrapper">
+      <div class="components-section">
+        <st-modal
+          modal-name="greeting modal"
+          header="A simple modal"
+          body="This is a simple modal to demonstrate what we can do. Btw, it is ADA compliant."
+          footer="Footer content"
+        ></st-modal>
+      </div>
+    </div>
+    <st-footer
+      copy-right="&#169; Standard Components 2020"
+    ></st-footer>
+  <script>
+    const stFooter = document.querySelector('st-footer');
+    const links = [
+      {label: 'Home', url: '/'},
+      {label: 'Contact Us', url: 'https://www.google.com' }
+    ];
+    stFooter.links = links;
+  </script>
   </body>
 </html>

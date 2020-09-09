@@ -1,6 +1,10 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
+  devServer: {
+    openBrowser: false,
+    port: 4444,
+  },
   namespace: 'standard-components',
   outputTargets: [
     {

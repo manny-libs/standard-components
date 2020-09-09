@@ -5,57 +5,60 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Link } from "./utils/types";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface StFooter {
+        "copy": string;
+        "doStuff": () => Promise<void>;
+        "links": Link[];
+    }
+    interface StModal {
+        "body": string;
+        "footer": string;
+        "header": string;
+        "modalName": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLStFooterElement extends Components.StFooter, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLStFooterElement: {
+        prototype: HTMLStFooterElement;
+        new (): HTMLStFooterElement;
+    };
+    interface HTMLStModalElement extends Components.StModal, HTMLStencilElement {
+    }
+    var HTMLStModalElement: {
+        prototype: HTMLStModalElement;
+        new (): HTMLStModalElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "st-footer": HTMLStFooterElement;
+        "st-modal": HTMLStModalElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface StFooter {
+        "copy"?: string;
+        "links"?: Link[];
+    }
+    interface StModal {
+        "body"?: string;
+        "footer"?: string;
+        "header"?: string;
+        "modalName"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "st-footer": StFooter;
+        "st-modal": StModal;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "st-footer": LocalJSX.StFooter & JSXBase.HTMLAttributes<HTMLStFooterElement>;
+            "st-modal": LocalJSX.StModal & JSXBase.HTMLAttributes<HTMLStModalElement>;
         }
     }
 }
